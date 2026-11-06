@@ -1,130 +1,101 @@
 ---
-name: bauhaus-modular-poster-skill
-description: Generate a Simplified-Chinese 9:16 poster in the 「包豪斯几何」(bauhaus-modular) style by 一张有戏. Use when the user wants a 包豪斯几何 / bauhaus modular poster.
+name: bauhaus-modular-poster
+description: 包豪斯几何海报：用模块几何、功能字体与克制的原色点缀，做一张理性清晰的海报。根据【主标题】【短句】【场景】【版式】【主色强调】【画幅】生成一张简体中文海报。当用户提到「包豪斯 / Bauhaus / 几何模块海报」时使用。 Use when the user asks for a Bauhaus modular poster, geometric primary-color poster — produces one poster with only three visible Chinese lines: headline, supporting line, and footer「一张有戏 · 视觉习作」.
+license: MIT
 ---
 
-# 包豪斯几何 · bauhaus-modular poster skill
+# 包豪斯几何 · Bauhaus Modular Poster
 
-一张有戏「包豪斯几何」风格海报技能。输出一张 9:16 竖版、简体中文的独立海报。
+用模块几何、功能字体与克制的原色点缀，做一张理性清晰的海报。
+A rational geometric poster with modular clarity, functional typography, and disciplined primary-color accents.
 
-## 用法
-1. 确定一个主标题（2–4 字）和一句短句。
-2. 画面只出现三段文字：主标题、短句、页脚「一张有戏 · 视觉习作」。
-3. 版式可选：big-type-only, modular-grid。
-4. 参照下方完整提示词模板，替换 Headline / Supporting phrase / 场景描述。
+## 输入 · Inputs
 
-## 示例主题
-- 圆的旅行：沿着几何找到新的方向（modular-grid）— Three unequal circles and one blue tangent, disciplined red/yellow/black modules on cream, no random ornament.
-- 模块练习：把秩序放进大小之间（big-type-only）— Unequal square modules, one red square and a blue semicircle, measured black gutters and strong title hierarchy.
-- 节拍：让形状有自己的速度（modular-grid）— Repeated black circle-square pairs with one red interruption, rational clean proportional spacing, cream ground.
-- 平衡：轻与重共同决定位置（big-type-only）— A geometric black lever, red circle and blue square in precise optical balance, one subtle yellow module.
-- 相遇：不同形状共享一段关系（modular-grid）— One blue circle tangential to red triangle in an asymmetrical grid, large open cream area and functional Chinese type.
-- 旋转：在同一中心看见变化（big-type-only）— Half circles and offset black arcs rotate around a clear modular center, measured red/yellow accents, not kaleidoscope clutter.
-- 构成：让比例成为画面的语言（modular-grid）— Black rectangle, red circle and blue thin lines occupy unequal aligned modules; crisp restrained primary color geometry.
-- 起点：从一个小圆开始展开（big-type-only）— One small red circle releases a proportional sequence of black and blue line modules, huge functional title, clean cream background.
-
-## 完整提示词模板（第 1 张原文）
 ```
-Use case: ads-marketing. Create exactly ONE polished professional 9:16 portrait poster, static flat artwork, Chinese-mainland cultural/creative studio portfolio concept.
-Language: Simplified Chinese. Headline: 圆的旅行. Supporting phrase: 沿着几何找到新的方向. Tiny plain footer: 一张有戏 · 视觉习作. Exact visible text ONLY these three phrases, every character correctly formed. No English, random numbers, fake events, dates, addresses, awards, offers, prices, affiliations, calls to action or status labels. All content is fictional/conceptual creative brief, no real client claim.
+【主标题】：
+【短句】：
+【场景】：
+【版式】：（big-type-only / modular-grid，缺省 modular-grid）
+【主色强调】：（红 / 蓝 / 黄（结构性地点缀，勿堆满））
+【画幅】：9:16（默认）
+```
 
-SOURCE UNIVERSAL RULES:
+**缺失字段不要追问**：只给了主标题（或部分字段）时，由你根据主标题自行补全其余字段，并保证场景、版式、主色强调彼此协调、指向同一概念。画幅缺省为 9:16。
+If any field is missing, fill it yourself coherently from the headline — never ask. Default aspect ratio 9:16.
 
+## 使用方法 · How to use
+1. 读取输入，补全缺失字段（内部完成，不输出分析）。
+2. 按下方核心规则 + [prompt.md](prompt.md) 组合提示词，交给图像生成工具，**只输出一张**海报。
+3. 若当前环境不能生图，输出下方「可直接粘贴的最终提示词」，已填好字段，供用户粘贴到 ChatGPT / 其他图像模型。
 
-These rules apply to every poster. Do not repeat them in layout or style notes.
+示例输入见 [examples/themes.md](examples/themes.md)。
 
-- Build around one dominant message, one clear focal point, and one communication goal.
-- Establish a simple reading order: headline -> focal image -> supporting copy -> supplied details.
-- Preserve required copy exactly unless the user explicitly asks for rewriting.
-- Keep important text readable, high-contrast, and inside safe margins.
-- Use confident spacing and avoid overstuffed layouts.
-- Avoid fake extra text, random logos, QR codes, decorative clutter, malformed typography, and generic AI-poster noise.
-- Treat the poster canvas as static print/editorial artwork rather than a clickable interface. If the source explicitly requests a product UI, browser window, dashboard, or device mockup, preserve that depicted content inside the poster.
-- CTA copy is extractive-only: include it only when the source explicitly supplies the wording. When output language differs, verify the translated CTA against a recorded exact source quote. Never invent action or status labels.
-- If no CTA is sourced, leave the action area empty. If one is sourced, render it as ordinary poster typography in a footer or text lockup. Do not place poster-level action copy inside a button, rounded rectangle, pill, chip, capsule, tab, input field, or any other clickable-looking UI container; do not decorate it with a shadow, arrow, chevron, or cursor icon.
+## 核心规则 · Core rules
 
-
-
-SELECTED STYLE — STRICTLY THIS VISUAL SYSTEM, DO NOT MIX OTHER STYLES:
-# Bauhaus Modular
-
-## Intent
-
+### 目标 · Intent
+用模块几何、功能字体与克制的原色点缀，做一张理性清晰的海报。
 Create a rational, geometric poster with modular clarity, functional typography, and disciplined primary-color accents.
 
-## Typography
-
+### 字体 · Typography
 - Use geometric sans-serif direction.
 - Favor clean hierarchy, numbers, labels, and modular text placement.
 - Keep type functional and balanced with shapes.
 
-## Palette
+### 配色 · Palette
+- White/cream/black base with red, blue, yellow, and occasional gray. Use accents sparingly and structurally.
+- 【主色强调】只取一个精确强调色，不要彩虹堆砌。
 
-White/cream/black base with red, blue, yellow, and occasional gray. Use accents sparingly and structurally.
+### 意象 · Imagery
+- Use circles, squares, lines, grids, simple diagrams, abstract forms, or minimal product/object photography.
+- 【场景】描述应支撑字体与版式，不要喧宾夺主（除非风格本身以主体物件为第一阅读）。
 
-## Imagery
+### 质感 · Texture / Material
+- Clean flat color, slight paper grain, print registration feel, simple vector-like surfaces.
 
-Use circles, squares, lines, grids, simple diagrams, abstract forms, or minimal product/object photography.
-
-## Texture / Material
-
-Clean flat color, slight paper grain, print registration feel, simple vector-like surfaces.
-
-## Composition Rules
-
+### 构图 · Composition
 - Build with clear modules and geometric relationships.
 - Use repetition, alignment, and proportional spacing.
 - Make ornament functional.
 - Let shapes carry rhythm and direction.
+- 版式从该风格允许的布局中选择：`big-type-only / modular-grid`；缺省 `modular-grid`。
+- 单一焦点、清晰阅读顺序：主标题 → 焦点画面 → 短句 → 页脚。
 
-## Avoid
+### 文字锁定 · Text lock（一张有戏）
+- 画面可见文字**只有三行**：【主标题】、【短句】、页脚「一张有戏 · 视觉习作」。
+- 简体中文；每个字正确成形；不要英文乱码、假活动、假日期、假地址、假奖项、假价格、假 CTA、假品牌。
+- 不要按钮/圆角胶囊/UI 容器；页脚就是普通小字排印。
 
-Childlike geometric clutter, too many primary colors, decorative randomness, soft gradients, and weak hierarchy.
+### 避免 · Avoid
+- Childlike geometric clutter, too many primary colors, decorative randomness, soft gradients, and weak hierarchy.
+- 额外假字、随机 logo、二维码、装饰堆砌、畸形字体、通用 AI 海报噪声、水印、UI。
 
+### 执行 · Execution
+不提问、不展示分析、不出多版本，直接输出一张海报。
 
-INTERNAL COMPOSITION:
-# Modular Grid
+## 可直接粘贴的最终提示词 · Ready-to-paste prompt template
 
-## Composition Structure
-
-- Use a visible or invisible grid of cards, cells, or modules.
-- Assign different scale to key modules for hierarchy.
-- Use repeated spacing and consistent alignment.
-- Reserve one module for the headline or master label.
-
-## Hierarchy Rules
-
-1. Largest module carries headline or key visual.
-2. Medium modules carry sections or benefits.
-3. Small modules carry details or metadata.
-
-## Text Placement
-
-- Keep text inside modules with consistent padding.
-- Use short labels, numbers, and compact paragraphs.
-- Treat details as a system, not scattered annotations.
-
-## Image Treatment
-
-Use icons, cropped photos, small diagrams, abstract shapes, or texture blocks inside cells.
-
-## Spacing Rules
-
-Grid gutters must be consistent. Use whitespace as structure.
-
-## Aspect-Ratio Behavior
-
-Works across all ratios; use fewer columns in narrow ratios and more columns in `16:9`.
-
-## Avoid
-
-Equal module importance, over-dense cells, inconsistent gutters, and decorative grids with no content logic.
-
-
-SPECIFIC SUBJECT AND ART DIRECTION:
-Three unequal circles and one blue tangent, disciplined red/yellow/black modules on cream, no random ornament.
-
-Quality: exquisite thoughtful art direction, one immediate focal point, sophisticated typographic spacing and clear reading order, original expressive composition with wide enough safe margins. Headline large and readable at phone thumbnail; secondary text restrained, not generic template. Typography adapted sensitively to real Chinese glyphs, with the visual weight demanded by style. Material/light/print treatment consistent with selected style. If any person appears, fictional mainland Chinese adult, natural anatomy and authentic face; otherwise no people. All props physically coherent unless the SPECIFIC surreal idea deliberately changes physics. No trademarks or label text on products, no fake logos/watermarks/QR. No poster mockup, wall frame, multiple-poster collage, UI buttons or decorative website components. The creative theme must determine composition; vary crop, hierarchy and negative space across the series. Output one finished poster only.
 ```
+【主标题】：{{主标题}}
+【短句】：{{短句}}
+【场景】：{{场景}}
+【版式】：{{版式，缺省 modular-grid；可选 big-type-only / modular-grid}}
+【主色强调】：{{主色强调}}
+【画幅】：{{画幅，默认 9:16}}
 
-全部 8 条提示词见 `PROMPTS.json`，来源见 `SOURCES.md`。
+Create exactly ONE polished professional {{画幅，默认 9:16}} portrait poster, static flat artwork, Chinese-mainland cultural/creative studio portfolio concept.
+Language: Simplified Chinese. Headline: {{主标题}}. Supporting phrase: {{短句}}. Tiny plain footer: 一张有戏 · 视觉习作. Exact visible text ONLY these three phrases, every character correctly formed. No English clutter, random numbers, fake events, dates, addresses, awards, offers, prices, affiliations, calls to action or status labels. All content is fictional/conceptual creative brief, no real client claim.
+If any field above is empty, fill it coherently from 【主标题】 so scene, accent and layout support one clear idea — do not ask questions.
+
+SELECTED STYLE — STRICTLY THIS VISUAL SYSTEM, DO NOT MIX OTHER STYLES:
+# Bauhaus Modular
+Intent: Create a rational, geometric poster with modular clarity, functional typography, and disciplined primary-color accents.
+Typography: Use geometric sans-serif direction. Favor clean hierarchy, numbers, labels, and modular text placement. Keep type functional and balanced with shapes.
+Palette: White/cream/black base with red, blue, yellow, and occasional gray. Use accents sparingly and structurally. Use exactly one precise accent from 【主色强调】.
+Imagery: Use circles, squares, lines, grids, simple diagrams, abstract forms, or minimal product/object photography. Scene direction: {{场景}}.
+Texture / Material: Clean flat color, slight paper grain, print registration feel, simple vector-like surfaces.
+Composition: Build with clear modules and geometric relationships. Use repetition, alignment, and proportional spacing. Make ornament functional. Let shapes carry rhythm and direction. Use layout {{版式，缺省 modular-grid}} from allowed set (big-type-only / modular-grid). One dominant message, one focal point; reading order headline -> focal image -> supporting copy -> footer. Confident spacing; no overstuffed layout; no UI buttons/pills for the footer.
+
+Avoid: Childlike geometric clutter, too many primary colors, decorative randomness, soft gradients, and weak hierarchy. Also avoid fake extra text, logos, QR codes, decorative clutter, malformed typography, generic AI-poster noise, watermarks, UI chrome.
+
+Do not ask questions. Do not show analysis or alternatives. Output the single finished poster only.
+```
